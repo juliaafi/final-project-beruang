@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"main.go/routes"
@@ -23,6 +24,6 @@ func main() {
 	routes.CategoryRoutes(r)
 	routes.BudgetRoutes(r)
 
-	r.Run(":8080")
+	r.Run(":" + os.Getenv("PORT"))
 
 }
