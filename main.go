@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -23,6 +24,12 @@ func main() {
 	routes.ExpenseRoutes(r)
 	routes.CategoryRoutes(r)
 	routes.BudgetRoutes(r)
+
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "Welcome to the Personal Finance Management API - BerUang",
+		})
+	})
 
 	r.Run(":" + os.Getenv("PORT"))
 
